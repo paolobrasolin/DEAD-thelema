@@ -1,0 +1,83 @@
+%!TEX root = alvellegis.tex 
+\def\unitepta{51.428571429}
+\def\unitpenta{72}
+\def\start{\unitepta}
+\def\startbis{65}
+\def\startter{150}
+\def\startquater{200}
+\def\hsp{\hspace{1mm}}
+\def\hspbis{\hspace{7mm}}
+\begin{center}
+\begin{tikzpicture}
+\draw[line width=3pt] (0,0) circle (4cm);
+\draw[line width=3pt] (0,0) circle (4.25cm);
+\draw[line width=3pt] (0,0) circle (5cm);
+\draw[line width=3pt] (0,0) circle (5.25cm);
+\node[coordinate] (A) at (-90:3) {};
+\node[coordinate] (B) at (-90 - \unitepta:3) {};
+\node[coordinate] (C) at (-90 + \unitepta:3) {};
+\node[coordinate] (D) at (-90 - 2 * \unitepta:3) {};
+\node[coordinate] (E) at (-90 + 2 * \unitepta:3) {};
+\node[coordinate] (F) at (-90 - 3 * \unitepta:3) {};
+\node[coordinate] (G) at (-90 + 3 * \unitepta:3) {};
+%
+\draw[line width=7pt] (A.center) -- (E.center)  -- (F.center) -- (B.center) -- (C.center) -- (G.center) -- (D.center) -- cycle;
+%
+\path [	rotate=90, 
+		postaction={decorate, 
+		            decoration={text align=fit to path, text along path,
+		            reverse path, text={
+		            |\hsp\color{black}\bf\sigillvmsize\scshape| 
+		            sigillvm sanctvm fraternitatis a a} } }] 
+		            (\start:4.45cm) arc (\start:360 - \start:4.45cm);
+%e
+\node (tensor) at (90:4.6) {\Huge $\otimes$};
+%\node (therefore) at (120:4.6) {\large \rotatebox[origin=c]{26.5}{$\therefore$}};
+%\node (therefore) at (110:4.6) {\large \rotatebox[origin=c]{20.5}{$\therefore$}};
+%
+\node at (\startbis - 1: 2.3cm) {\babalonsize\bf\rotatebox[origin=c]{-22.5} B};
+\node at (\startbis - \unitepta: 2.3cm) {\babalonsize\bf\rotatebox[origin=c]{-75} A};
+\node at (\startbis - 2 * \unitepta: 2.3cm) {\babalonsize\bf\rotatebox[origin=c]{-135} B};
+\node at (\startbis - 3 * \unitepta: 2.3cm) {\babalonsize\bf\rotatebox[origin=c]{-180} A};
+\node at (\startbis - 4 * \unitepta - 2: 2.3cm) {\babalonsize\bf\rotatebox[origin=c]{-230} L};
+\node at (\startbis - 5 * \unitepta: 2.3cm) {\babalonsize\bf\rotatebox[origin=c]{68} O};
+\node at (\startbis - 6 * \unitepta: 2.3cm) {\babalonsize\bf\rotatebox[origin=c]{20} N};
+%
+%
+%
+\node[below] (A) at (-90:1) {\sevensize \bf\Seven};
+\node[left] (B) at (180:.6) {\sevensize \bf\Seven\Seven\ding{64}};
+\node[right] (C) at (0:.6) {\sevensize \bf \ding{64}\Seven\Seven};
+\node[above] (D) at (90:1) {\sevensize \bf \Seven\Seven\ding{64}\Seven\Seven};
+%
+\filldraw[xshift=-.8cm, white] (0,-.2) rectangle (.1, .15);
+\filldraw[xshift=.7cm, white] (0,-.2) rectangle (.1, .15);
+\filldraw[white] (-.8,.026) circle (1.2pt);
+\filldraw[white] (.8,.026) circle (1.4pt);
+\draw[line width=.6pt] (-1,0.02) -- (1,0.02);
+%
+%
+\draw[xshift=-.5cm, line width=5pt] (-60:1) arc (-60:60:1) arc (120:240:1) -- cycle;
+\draw[line width=6pt] (-.5,0.02) -- (.5,0.02);
+%\begin{scope}[yscale=1,xscale=-1]
+%\draw[xshift=-.5cm, line width=5pt] (-60:1) arc (-60:60:1);
+%\end{scope}
+%\node[coordinate] (E) at (-90 + 2 * \unitpenta:1) {777};
+
+% \path [ rotate=70, 
+% 		postaction={decorate, 
+% 		            decoration={text along path,reverse path, text align=center,
+% 		            text={
+% 		            |\hspbis\Large\color{black}\bf\scshape| B A } } }] (\startbis:2.2cm) arc (\startbis:360:2.2cm);
+% \path [ rotate=0, 
+% 		postaction={decorate, 
+% 		            decoration={text along path,reverse path, text align=center,
+% 		            text={
+% 		            |\hspbis\Large\color{black}\bf\scshape|B A} } }] (\startter:2.2cm) arc (\startbis:360:2.2cm);
+% \path [ rotate=0, 
+% 		postaction={decorate, 
+% 		            decoration={text along path,reverse path, text align=center,
+% 		            text={
+% 		            |\hspbis\Large\color{black}\bf\scshape|L O N} } }] (\startquater:2.2cm) arc (\startbis:360:2.2cm);
+\end{tikzpicture}
+\end{center}

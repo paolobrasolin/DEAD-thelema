@@ -1,0 +1,48 @@
+%!TEX root = alvellegis.tex
+\documentclass[a4paper, 16pt]{book}
+\renewcommand*\sfdefault{ugq}
+\def\babalonsize{\fontsize{15}{25}\selectfont}
+\def\sigillvmsize{\fontsize{21}{31}\selectfont}
+\def\sevensize{\mega\selectfont }
+\def\mega{\fontsize{15}{20}}
+\def\giga{\fontsize{60}{70}}
+\def\yotta{\fontsize{70}{80}}
+
+\usepackage{amsmath, amssymb, amsfonts, lettrine, xcolor, tikz, enumitem, graphics, anyfontsize, hieroglf, pifont}
+\usepackage{newtxtext,newtxmath}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{libertine}
+\usepackage[hebrew, greek, english]{babel}
+
+\usepackage[left=4cm, right=4cm]{geometry}
+\usepackage{CJKutf8}
+\usepackage{cjhebrew}
+\usepackage[outline]{contour}
+%
+\contourlength{.5pt}
+\contournumber{10}%
+\def\Seven{\contour{black}{7}}
+%
+\usepackage{frcursive}
+%\usepackage{pvscript}
+%\usepackage{oesch}
+%\usepackage{aurical}
+
+\def\signature{\textcursive{Ankh-f-n-khonsu}}
+%\def\signatureb{\Fontlukas{Ankh-f-n-khonsu}}
+\def\signaturec{\oeschfamily{Ankh-f-n-khonsu}}
+%\def\signatured{\textcursive{Ankh-f-n-khonsu}}
+
+\usepackage{fancyhdr}
+\renewcommand{\thepage}{\textsc{\roman{page}}}
+\newcommand{\decohead}{\reflectbox{\textpmhg{SSSSSSFamowiY}} \hfill \thepage \hfill \textpmhg{SSSSSSFamowIY}}
+\newcommand{\decofoot}{decofoot}
+\pagestyle{fancy}
+\chead{\decohead}
+\cfoot{}
+
+\def\wholeline{\textpmhg{abcdefghijklmnopqrstuvwxyz \\ ABCDEFGHIJKLMNOPQRSTUVWXYZ}}
+\usetikzlibrary{decorations.text}
+
+\setlist[enumerate]{itemsep=5mm}
