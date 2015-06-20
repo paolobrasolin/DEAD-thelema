@@ -124,9 +124,3 @@ sympy-plots-for-*.tex/
 # WinEdt
 *.bak
 *.sav
-
-fou.tex
-paw.tex
-preamble.tex
-fou/
-paw/
