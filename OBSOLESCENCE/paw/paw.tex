@@ -1,0 +1,105 @@
+
+% ####################################################### front-cover-paw.tex #
+\begin{filecontents}{front-cover-paw.tex}
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.center) {\begin{tikzpicture}
+  % Decorations
+  \node             at (     \cp +  0.5\cw,       \cp +.5\cf) {\clfrieze};
+  \node             at (\cW -\cp -  0.5\cw,       \cp +.5\cf) {\crfrieze};
+  \node             at (            0.5\cW,       \cp +.5\cf) {\ccfrieze};
+  \node             at (     \cp +1.255\ch, \cH - \cp -.5\ch) {\chwings};
+  \node [xscale=-1] at (     \cp +3.745\ch, \cH - \cp -.5\ch) {\chwings};
+  \node             at (     \cp +0.252\cw, \cf +2\cp + 3\cw) {\chcolumn};
+  \node [xscale=-1] at (     \cp +0.748\cw, \cf +2\cp + 3\cw) {\chcolumn};
+  \node             at (\cW -\cp -0.748\cw, \cf +2\cp + 3\cw) {\chcolumn};
+  \node [xscale=-1] at (\cW -\cp -0.252\cw, \cf +2\cp + 3\cw) {\chcolumn};
+  % Frames
+  \draw [black, solid, ultra thick] (0,0) rectangle ++(\cW,\cH);
+  \draw [black, solid, ultra thick] (    \cp,\cp) rectangle ++( \cw,\cf);
+  \draw [black, solid, ultra thick] (\cW-\cp,\cp) rectangle ++(-\cw,\cf);
+  \draw [black, solid, ultra thick] (2\cp+\cw,\cp) rectangle ++(\cW-4\cp-2\cw,\cf);
+  \draw [black, solid, ultra thick] (\cp,\cH-\cp) rectangle ++(5\ch,-\ch);
+  \draw [black, solid, ultra thick] (\cw+2\cp,\cH-\ch-3.5\cp) rectangle (\cW-2\cp-\cw,\cH-6\cw-\ch-2\cp);
+  \draw [black, solid, ultra thick] (\cp,\cH-2\cp-\ch) -- ++(0,-6\cw)
+    -- ++(\cw,0) -- ++(0,6\cw-0.75\cp) -- ++(\cW-2\cw-2\cp,0)
+    -- ++(0,-6\cw+0.75\cp) -- ++(\cw,0) -- ++(0,6\cw) -- cycle;
+  % Titling
+  \node at (0.5\cW,0.5\cH) {\ctitle};
+\end{tikzpicture}};
+\end{tikzpicture}
+\end{filecontents}
+% ####################################################################### EOF #
+
+% ###################################################### second-cover-paw.tex #
+\begin{filecontents}{second-cover-paw.tex}
+\begin{tikzpicture}[remember picture,overlay]
+\node at (current page.center) {\begin{tikzpicture}
+  \draw [black, solid, line width=0.8pt] (0,0)
+    circle (39.6pt) circle (38pt) circle (30.4pt) circle (28.8pt);
+  \node [%draw, red, dashed,
+    rotate=180, minimum size=48pt, regular polygon, regular polygon sides=7] at (0,0) (E) {};
+  \draw [black, solid, line width=2.8pt]
+    (E.corner 1) -- (E.corner 3) -- (E.corner 5) -- (E.corner 7) --
+    (E.corner 2) -- (E.corner 4) -- (E.corner 6) -- cycle;
+  \path [%draw, red, dashed,
+     postaction={decorate,decoration={raise=-0.5ex,text along path, text align=fit to path, text={|\fontsize{6pt}{0pt}\selectfont\sigil|SIGILLVM SANCTVM FRATERNITATIS A∴A∴}}}]
+    (64.286:34.2pt) arc (64.286:-244.286:34.2pt);
+  \node [draw, red,
+    rotate=180, minimum size=35pt, regular polygon, regular polygon sides=7] at (0,0) (F) {};
+  \draw [black, solid, line width=2.8pt]
+    (F.corner 1) -- (F.corner 3) -- (F.corner 5) -- (F.corner 7) --
+    (F.corner 2) -- (F.corner 4) -- (F.corner 6) -- cycle;
+  \path [draw, red, dashed,
+     postaction={decorate,decoration={raise=-0.5ex,text along path, text align=fit to path, text={|\fontsize{6pt}{0pt}\selectfont\sigil|BABALONB}}}]
+    (0,0) circle (16pt);
+  \node at (0,0) {
+    \begin{tikzpicture}
+      \draw [black, solid, line width=2.4pt]
+        (0,0) arc (128.571:231.429:8.4pt) arc (-51.429:51.429:8.4pt) arc (128.571:231.429:8.4pt);
+    \end{tikzpicture}};%traverso è 1.2pt
+  \node at (90:34.2pt) {
+    \begin{tikzpicture}
+      \draw [black, solid, line width=0.8pt] (0,0) circle (3.8pt);
+      \draw [black, solid, line width=0.8pt] ( 45:3.8pt) -- (225:3.8pt);
+      \draw [black, solid, line width=0.8pt] (135:3.8pt) -- (315:3.8pt);
+    \end{tikzpicture}
+  };
+\end{tikzpicture}};
+\end{tikzpicture}
+\end{filecontents}
+% ####################################################################### EOF #
+
+
+% ######################################################### printable-paw.tex #
+\begin{filecontents}{printable-paw.tex}
+\documentclass[a4paper,showtrims]{memoir}
+\usepackage{pdfpages}
+\input{preamble-paw.tex}
+%\usepackage{showframe}
+
+\settrimmedsize{2\bookwidth}{\bookheight}{*}
+%\checkandfixthelayout
+\quarkmarks
+
+\begin{document}
+\includepdf[pages=-,booklet,landscape]{paw-readable.pdf}
+\end{document}
+\end{filecontents}
+% ####################################################################### EOF #
+
+% ############################################################### make-paw.sh #
+\begin{filecontents*}{make-paw.sh}
+xelatex readable-paw.tex
+xelatex readable-paw.tex
+mv readable-paw.pdf paw-readable.pdf
+xelatex printable-paw.tex
+mv printable-paw.pdf paw-printable.pdf
+rm *-paw.*
+\end{filecontents*}
+% ####################################################################### EOF #
+
+\documentclass{standalone}
+\begin{document}
+\fbox{\Huge\centering\bfseries COME AT ME \pdfliteral{1 0 0 rg}BRO}%
+\immediate\write18{sh make-paw.sh}%
+\end{document}
